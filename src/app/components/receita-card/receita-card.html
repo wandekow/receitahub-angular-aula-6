@@ -1,0 +1,15 @@
+<article class="recipe-card">
+  <div class="image-wrap">
+    <img [src]="receita().imagem" [alt]="'Foto de ' + receita().nome" loading="lazy" />
+    <span class="category">{{ receita().categoria }}</span>
+    <button class="favorite" type="button" (click)="favoritar.emit(receita().id)" [class.is-favorite]="receita().favorita" [attr.aria-label]="receita().favorita ? 'Remover dos favoritos' : 'Adicionar aos favoritos'">
+      {{ receita().favorita ? '♥' : '♡' }}
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="card-meta"><span>⏱ {{ receita().tempoPreparo }} min</span><span>•</span><span class="difficulty" [class.easy]="receita().dificuldade === 'Fácil'">@switch (receita().dificuldade) { @case ('Fácil') { Fácil } @case ('Média') { Média } @default { Difícil } }</span></div>
+    <h3>{{ receita().nome }}</h3>
+    <p>{{ receita().descricao }}</p>
+    <a class="read-more" [routerLink]="['/receitas', receita().id]">Ver receita <span>↗</span></a>
+  </div>
+</article>

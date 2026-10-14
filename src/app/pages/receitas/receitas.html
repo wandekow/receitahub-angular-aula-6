@@ -1,0 +1,17 @@
+<section class="catalogue section-container">
+  <div class="page-intro"><span class="eyebrow"><i></i> Explore a coleção</span><h1>Receitas para<br /><em>todos os dias.</em></h1><p>Do café da manhã ao jantar especial, encontre uma ideia que combine com o seu momento.</p></div>
+
+  <div class="filter-bar">
+    <label class="search-field"><span>⌕</span><input type="search" [(ngModel)]="termoBusca" placeholder="Buscar receita..." aria-label="Buscar receita por nome" /></label>
+    <label class="category-field"><span>Categoria</span><select [(ngModel)]="categoriaSelecionada" aria-label="Filtrar por categoria"><option value="Todas">Todas as categorias</option>@for (categoria of categorias.slice(1); track categoria) {<option [value]="categoria">{{ categoria }}</option>}</select></label>
+    <span class="result-count">{{ receitasFiltradas.length }} receitas encontradas</span>
+  </div>
+
+  @if (receitasFiltradas.length > 0) {
+    <div class="recipe-grid">
+      @for (receita of receitasFiltradas; track receita.id) { <app-receita-card [receita]="receita" (favoritar)="alternarFavorito($event)" /> }
+    </div>
+  } @else {
+    <div class="empty-state"><span class="empty-icon">⌕</span><h2>Nenhuma receita encontrada</h2><p>Tente buscar por outro nome ou voltar a ver todas as categorias.</p><button class="primary-button" type="button" (click)="limparFiltros()">Limpar filtros</button></div>
+  }
+</section>

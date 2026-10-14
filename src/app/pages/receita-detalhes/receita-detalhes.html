@@ -1,0 +1,17 @@
+@if (receita; as item) {
+  <section class="detail section-container">
+    <a class="back-link" routerLink="/receitas">← Voltar para receitas</a>
+    <div class="detail-layout">
+      <div class="detail-image"><img [src]="item.imagem" [alt]="'Foto de ' + item.nome" /><span class="category">{{ item.categoria }}</span></div>
+      <div class="detail-copy">
+        <div class="detail-topline"><span class="eyebrow">Receita {{ item.id | number: '2.0-0' }}</span><button class="favorite-button" type="button" (click)="alternarFavorito()">{{ item.favorita ? '♥ Salva nos favoritos' : '♡ Salvar nos favoritos' }}</button></div>
+        <h1>{{ item.nome }}</h1><p class="lead">{{ item.descricao }}</p>
+        <div class="detail-stats"><div><strong>{{ item.tempoPreparo }}</strong><span>minutos</span></div><div><strong>{{ item.dificuldade }}</strong><span>dificuldade</span></div><div><strong>{{ item.ingredientes.length }}</strong><span>ingredientes</span></div></div>
+        <div class="detail-columns"><div><h2>Ingredientes</h2><ul>@for (ingrediente of item.ingredientes; track ingrediente) { <li><span>✦</span>{{ ingrediente }}</li> }</ul></div><div><h2>Modo de preparo</h2><ol>@for (passo of item.modoPreparo; track passo; let i = $index) { <li><span>{{ i + 1 | number: '2.0-0' }}</span>{{ passo }}</li> }</ol></div></div>
+        @switch (item.dificuldade) { @case ('Fácil') { <p class="tip tip-easy">Dica: uma receita perfeita para começar sem pressa.</p> } @case ('Média') { <p class="tip">Dica: deixe todos os ingredientes separados antes de começar.</p> } @default { <p class="tip">Dica: respeite os tempos de descanso para um resultado ainda melhor.</p> } }
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="not-found-inline section-container"><span>⌁</span><h1>Receita não encontrada</h1><p>O endereço pode estar incorreto ou a receita não existe mais.</p><a class="primary-button" routerLink="/receitas">Voltar para o catálogo</a></section>
+}

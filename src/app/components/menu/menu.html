@@ -1,0 +1,21 @@
+<header class="topbar">
+  <div class="nav-wrap">
+    <a class="brand" routerLink="/" (click)="fecharMenu()" aria-label="ReceitaHub início">
+      <span class="brand-mark">✦</span>
+      <span>Receita<span class="brand-accent">Hub</span></span>
+    </a>
+
+    <button class="menu-toggle" type="button" (click)="alternarMenu()" [attr.aria-expanded]="menuAberto" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav-links" [class.open]="menuAberto" aria-label="Navegação principal">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="fecharMenu()">Início</a>
+      <a routerLink="/receitas" routerLinkActive="active" (click)="fecharMenu()">Receitas</a>
+      <a routerLink="/cadastrar" routerLinkActive="active" (click)="fecharMenu()">Criar receita</a>
+      <a routerLink="/sobre" routerLinkActive="active" (click)="fecharMenu()">Sobre</a>
+    </nav>
+
+    <a class="nav-cta" routerLink="/cadastrar" (click)="fecharMenu()">Compartilhar receita <span>↗</span></a>
+  </div>
+</header>

@@ -1,0 +1,33 @@
+<section class="home-hero section-container">
+  <div class="hero-copy">
+    <span class="eyebrow"><i></i> Cozinhar é criar memórias</span>
+    <h1>Receitas para<br /><em>viver</em> devagar.</h1>
+    <p>Um lugar para descobrir sabores, guardar seus favoritos e transformar ingredientes simples em momentos especiais.</p>
+    <div class="hero-actions"><a class="primary-button" routerLink="/receitas">Explorar receitas <span>↗</span></a><a class="text-link" routerLink="/sobre">Conheça o projeto <span>→</span></a></div>
+  </div>
+  <div class="hero-art" aria-label="Composição de ingredientes frescos">
+    <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+    <div class="hero-photo"><img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1000&q=85" alt="Ingredientes frescos coloridos" /></div>
+    <div class="hero-note note-top"><strong>feito com afeto</strong><span>✦</span></div>
+    <div class="hero-note note-bottom"><span>✿</span><strong>+ sabor, menos pressa</strong></div>
+  </div>
+</section>
+
+<section class="stats-strip section-container">
+  <div class="stat"><span class="stat-icon">✦</span><div><strong>{{ totalReceitas() }}</strong><span>receitas na casa</span></div></div>
+  <div class="stat"><span class="stat-icon warm">♥</span><div><strong>{{ totalFavoritas() }}</strong><span>favoritas da comunidade</span></div></div>
+  <div class="stat"><span class="stat-icon green">⌁</span><div><strong>100%</strong><span>dados em memória</span></div></div>
+</section>
+
+<section class="featured section-container">
+  <div class="section-heading"><div><span class="eyebrow">Para experimentar hoje</span><h2>Receitas em destaque</h2></div><a class="text-link" routerLink="/receitas">Ver todas <span>→</span></a></div>
+  @if (destaques().length > 0) {
+    <div class="recipe-grid">
+      @for (receita of destaques(); track receita.id) { <app-receita-card [receita]="receita" (favoritar)="alternarFavorito($event)" /> }
+    </div>
+  } @else {
+    <div class="empty-box"><strong>Nenhuma receita em destaque ainda.</strong><a routerLink="/receitas">Escolher favoritas</a></div>
+  }
+</section>
+
+<section class="home-quote section-container"><span class="quote-mark">“</span><p>Uma receita é apenas uma história que ainda não foi compartilhada.</p><span class="quote-line"></span></section>

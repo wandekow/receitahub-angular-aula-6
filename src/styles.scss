@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&display=swap');
+
+:root { --font-body: 'DM Sans', Arial, sans-serif; --font-display: 'Playfair Display', Georgia, serif; }
+* { box-sizing: border-box; } html { scroll-behavior: smooth; } body { margin: 0; background: #fbf9f4; color: #20392d; font-family: var(--font-body); } button, input, textarea, select { font-family: inherit; } ::selection { background: #f0c8bc; color: #20392d; }
+.section-container { max-width: 1180px; margin: 0 auto; padding-left: 28px; padding-right: 28px; }.site-footer { border-top: 1px solid rgba(34,54,44,.09); }.footer-inner { max-width: 1180px; min-height: 92px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }.footer-inner strong { color: #20392d; font-family: var(--font-display); font-size: 1.2rem; }.footer-inner strong span { color: #d65c3c; }.footer-inner small { color: #9aa49d; font-size: .72rem; }
+@media (max-width: 560px) { .section-container { padding-left: 20px; padding-right: 20px; }.footer-inner { min-height: 84px; padding: 0 20px; gap: 15px; }.footer-inner small { text-align: right; } }
